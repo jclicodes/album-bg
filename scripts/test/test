@@ -1,0 +1,33 @@
+#!/usr/bin/sh
+
+echo "This e2e test requires disk and network access."
+echo "Beginning in 5 seconds. CTRL + C to quit now."
+sleep 5
+
+# Ensure album-bg is installed.
+INSTALLED=$(which album-bg)
+
+if [[ $? -eq 1 ]]; then
+  echo "Please install album-bg before attempting to run the test"
+  exit 1
+fi
+
+
+# Get image from CDN 
+curl -o ./input.jpg https://e.snmc.io/i/fullres/w/8e822768555ea1c7beac86893d7b51a3/10186220
+
+# Check image was downloaded successfully
+FILE=./input.jpg
+if [[ ! -f "$FILE" ]]; then
+  echo "Test image appears to have moved or the CDN is down. Please create an issue."
+  exit 1
+fi
+
+album-bg -i ./input.png -o ./output.png
+album-bg -i ./input.png -o ./output.jpg
+album-bg -i ./input.png -o ./output.jpeg
+
+FILE1=./output.png
+FILE2=./output.jpg
+FILE3=./output.jpeg
+
