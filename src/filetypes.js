@@ -4,14 +4,24 @@ const FILETYPES = {
   png: "image/png",
 };
 
-const filetypeSupported = (fileName) => {
+const getOutputImageExtension = (fileName) => {
   const dot = fileName.indexOf(".");
-  const ext = fileName.slice(dot);
+  return fileName.slice(dot + 1);
+};
 
+const filetypeSupported = (fileName) => {
+  const ext = getOutputImageExtension(fileName);
   const available = Object.keys(FILETYPES);
 
   return available.includes(ext);
 };
 
-module.exports = { filetypeSupported };
+const bufferTypeOf = (fileName) => {
+  const extension = getOutputImageExtension(fileName);
+
+  // Safe; args are validated from argstring against filetypeSupported method.
+  return FILETYPES[extension];
+};
+
+module.exports = { filetypeSupported, getOutputImageExtension, bufferTypeOf };
 

@@ -2,6 +2,8 @@ const { createCanvas, loadImage } = require('canvas')
 const fs = require('fs')
 const Vibrant = require('node-vibrant')
 
+const { bufferTypeOf } = require('./filetypes.js');
+
 const RESOLUTION = [2560, 1440]
 const IMAGESIZE = [800, 800]
 
@@ -39,7 +41,8 @@ const drawImage = async (bgColour, img, out) => {
 
   await drawAlbumCover(img)
 
-  const buffer = canvas.toBuffer('image/png')
+  const bufferType = bufferTypeOf(out);
+  const buffer = canvas.toBuffer(bufferType)
   fs.writeFileSync(out, buffer)
 }
 
