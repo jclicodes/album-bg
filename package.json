@@ -1,0 +1,15 @@
+{
+  "name": "album-bg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.10.1",
+    "node-vibrant": "^3.2.1-alpha.1"
+  }
+}
