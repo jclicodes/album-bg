@@ -13,7 +13,7 @@ const getAlbumColours = async (image) => {
   return v.getPalette().then((palette) => {
     const swatches = Object.keys(palette)
     const randomSwatch = swatches[(Math.floor(Math.random() * swatches.length))]
-    const randomBg = palette[randomSwatch].getHex()
+    const randomBg = palette[randomSwatch].hex()
 
     return randomBg
   })
