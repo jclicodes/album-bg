@@ -1,33 +1,34 @@
 const { createCanvas, loadImage } = require('canvas')
+const fs = require('fs')
 const Vibrant = require('node-vibrant')
 
-const RESOLUTION = ["2560", "1440"]
+const RESOLUTION = [2560, 1440]
 const IMAGE = "example.jpg"
 
 const canvas = createCanvas(RESOLUTION[0], RESOLUTION[1])
 const ctx = canvas.getContext('2d')
 
-const getAlbumColours = () => {
-  Vibrant.from(IMAGE)
-    .quality(1)
-    .clearFilters()
-    .getPalette()
-    .then(palette => {
-      const swatches = Object.keys(palette)
-      const randomSwatch = swatches[(Math.ceil(Math.random() * swatches.length))]
-      const randomBg = palette[randomSwatch].getHex()
+const getAlbumColours = async (image) => {
+  let v = new Vibrant(image)
+  return v.getPalette().then((palette) => {
+    const swatches = Object.keys(palette)
+    const randomSwatch = swatches[(Math.ceil(Math.random() * swatches.length))]
+    const randomBg = palette[randomSwatch].getHex()
 
-      return randomBg
-    })
-    // TODO: Exception if colours cannot be extracted
-  return ''
+    return randomBg
+  })
 }
 
+const drawImage = (bgColour) => {
+  const [width, height] = RESOLUTION
+  ctx.fillStyle = bgColour
+  ctx.fillRect(0, 0, width, height) 
 
+  const buffer = canvas.toBuffer('image/png')
+  fs.writeFileSync('test.png', buffer)
+}
 
-
-
-
+getAlbumColours(IMAGE).then(randomBg => drawImage(randomBg))
 
 // // Write "Awesome!"
 // ctx.font = '30px Impact'
