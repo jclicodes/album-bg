@@ -4,20 +4,23 @@ album-bg is a utility for generating desktop backgrounds from your favourite alb
 
 **_Features_**:
 
--[x] Accepts an input image, and will generate an aesthetically-pleasing desktop background.
--[ ] Accepts an image URL, or a directory with images as input.
--[ ] Integrates with Spotify to automatically take your favourite tracks as input.
--[ ] Sets your system background
+- [x] Accepts an input image, and will generate an aesthetically-pleasing desktop background.
+
+- [ ] Accepts an image URL, or a directory with images as input.
+
+- [ ] Integrates with Spotify to automatically take your favourite tracks as input.
+
+- [ ] Sets your system background
 
 # Installation 
 
 1. Clone this repository (not yet uploaded to NPM)
 
-`git clone --depth=1 https://github.com/J-Curragh/album-bg`
+   `git clone --depth=1 https://github.com/J-Curragh/album-bg`
 
 2. Install script globally (the '.' is important!)
 
-`npm install -g .`
+   `npm install -g .`
 
 3. Ensure ~/.npm is on your $PATH. 
 
@@ -29,7 +32,7 @@ album-bg is a utility for generating desktop backgrounds from your favourite alb
 
 ![Mr. Morale & The Big Steppers - Kendrick Lamar](https://i.ibb.co/YBcMKdp/9942377.jpg)
 
-** Example background (generated)**
+**Example background (generated)**
 
 ![Deskstop Background - Mr. Morale & The Big Steppers](https://i.ibb.co/mTfdshm/out.png)
 
