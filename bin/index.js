@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const { getAlbumColours, drawImage } = require('./colour.js')
+
+const { getAlbumColours, drawImage } = require('../src/colour.js')
 const yargs = require('yargs')
 
 const argv = yargs(process.argv.slice(2))
