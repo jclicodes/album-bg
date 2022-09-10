@@ -31,7 +31,7 @@ const drawAlbumCover = async (img) => {
   })
 }
 
-const drawImage = async (bgColour, img) => {
+const drawImage = async (bgColour, img, out) => {
   const [width, height] = RESOLUTION
 
   ctx.fillStyle = bgColour
@@ -40,7 +40,7 @@ const drawImage = async (bgColour, img) => {
   await drawAlbumCover(img)
 
   const buffer = canvas.toBuffer('image/png')
-  fs.writeFileSync('test.png', buffer)
+  fs.writeFileSync(out, buffer)
 }
 
 module.exports = { getAlbumColours, drawImage }

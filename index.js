@@ -7,8 +7,15 @@ const argv = yargs(process.argv.slice(2))
     alias: 'i',
     demandOption: true,
     description: 'Single image or directory of images to use',
-    type: 'string',
-  }).argv
+    type: 'string'
+  })
+  .option('out', {
+    alias: 'o',
+    demandOption: true,
+    description: 'Path to output target',
+    type: 'string'
+  })
+  .argv
 
 
-getAlbumColours(argv.img).then(randomBg => drawImage(randomBg, argv.img))
+getAlbumColours(argv.img).then(randomBg => drawImage(randomBg, argv.img, argv.out))
