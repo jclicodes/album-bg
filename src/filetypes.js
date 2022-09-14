@@ -5,7 +5,7 @@ const FILETYPES = {
 };
 
 const getOutputImageExtension = (fileName) => {
-  const dot = fileName.indexOf(".");
+  const dot = fileName.lastIndexOf(".");
   return fileName.slice(dot + 1);
 };
 
